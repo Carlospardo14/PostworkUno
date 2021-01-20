@@ -58,19 +58,22 @@ console.log('Test 3:', chunk(data, 3)) // [[1, 2, 3], [4, 5, 6], [7, 8]]
 function frequency(string) {
     var splitted_str = string.split("");
     var freq = {};
-    var arrLength = splitted_str.length; 
-    for (let i = 0 ; i < arrLength ; i++){
+    var letters = [];
+    for (let i = 0 ; i < splitted_str.length ; i++){
         if (!Object.keys(freq).includes(splitted_str[i])){
-                freq[splitted_str[i]] = 0;
-
+                letters.push(splitted_str[i])
         }
     }
-    var key_names = Object.keys(freq);
-    var keysLength = key_names.length;
-    for (let i = 0; i < keysLength; i++){
-        for (let k in splitted_str){
+    letters = letters.sort()
+    for (i in letters){
+        freq[letters[i]]=0
+    }
+    var key_names = Object.keys(freq).sort();
+
+    for (let i = 0; i < key_names.length; i++){
+        for (let k = 0; k < splitted_str.length; k++){
             if (key_names[i] === splitted_str[k]){
-                freq[key_names[i]] += 1;
+                freq[key_names[i]] += 1
             }
         }
     }
